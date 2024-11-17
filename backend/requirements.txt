@@ -3,7 +3,6 @@ uvicorn
 python-jose
 passlib
 sqlalchemy
-sqlite3
 bcrypt
 email-validator
 python-dotenv
