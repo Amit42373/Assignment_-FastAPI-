@@ -13,7 +13,7 @@ app = FastAPI()
 # Add CORS Middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:8501/"],  # List of allowed origins
+    allow_origins=["https://assignment-fastapi-1.onrender.com/"],  # List of allowed origins
     allow_credentials=True,  # Allow cookies to be sent
     allow_methods=["*"],  # Allow all HTTP methods (GET, POST, PUT, DELETE, etc.)
     allow_headers=["*"],  # Allow all headers (Authorization, Content-Type, etc.)
