@@ -28,8 +28,8 @@ Backend Setup Instructions
 1. Clone the Repository
 ------------------------
 Run the following command:
-    git clone <repository_url>
-    cd <repository_directory>
+    git clone https://github.com/Amit42373/Assignment_-FastAPI-
+    cd Assignment_-FastAPI-
 
 2. Setup a Virtual Environment (Optional)
 -----------------------------------------
