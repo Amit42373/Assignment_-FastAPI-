@@ -3,6 +3,8 @@ from sqlalchemy.orm import Session
 from . import models, schemas, utils
 from .database import SessionLocal, engine
 from fastapi.middleware.cors import CORSMiddleware
+import os
+import uvicorn
 
 models.Base.metadata.create_all(bind=engine)
 
@@ -16,6 +18,10 @@ app.add_middleware(
     allow_methods=["*"],  # Allow all HTTP methods (GET, POST, PUT, DELETE, etc.)
     allow_headers=["*"],  # Allow all headers (Authorization, Content-Type, etc.)
 )
+
+if __name__ == "__main__":
+    port = int(os.getenv("PORT", 8000))  # Default to 8000 if PORT is not set
+    uvicorn.run("app.auth:app", host="0.0.0.0", port=port, reload=True)
 
 def get_db():
     db = SessionLocal()
