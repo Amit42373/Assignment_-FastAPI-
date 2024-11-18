@@ -35,6 +35,8 @@ def get_db():
 async def root():
     return {"message": "Hello World"}
 
+EMAIL_REGEX = r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'
+
 @app.post("/register")
 def register_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
     if not re.match(EMAIL_REGEX, user.email):
