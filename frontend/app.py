@@ -1,8 +1,12 @@
 import streamlit as st
 import requests
+import re
 
-# BASE_URL = "http://127.0.0.1:8000"
-BASE_URL = "https://assignment-fastapi.onrender.com"
+
+BASE_URL = "http://127.0.0.1:8000"
+# BASE_URL = "https://assignment-fastapi.onrender.com/"
+
+EMAIL_REGEX = r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.(com|org|net|edu|gov|mil|info|io|co|biz|[a-zA-Z]{2})$'
 
 def signup():
     st.title("Signup")
@@ -10,8 +14,17 @@ def signup():
     email = st.text_input("Email")
     password = st.text_input("Password", type="password")
     if st.button("Register"):
+        if not re.match(EMAIL_REGEX, email):
+            st.error("Please enter a valid email address")
+            return
+
         response = requests.post(f"{BASE_URL}/register", json={"username": username, "email": email, "password": password})
-        st.success(response.json().get("message", "Registered"))
+          # Handle response
+        if response.status_code == 200:
+            st.success(response.json().get("message", "Registered"))
+        else:
+            st.error(response.json().get("detail", "Error occurred during registration"))
+
 
 def login():
     st.title("Login")

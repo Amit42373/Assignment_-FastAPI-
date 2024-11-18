@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 from . import models, schemas, utils
 from .database import SessionLocal, engine
 from fastapi.middleware.cors import CORSMiddleware
-import os
+import os, re
 import uvicorn
 
 models.Base.metadata.create_all(bind=engine)
@@ -34,8 +34,14 @@ def get_db():
 async def root():
     return {"message": "Hello World"}
 
+EMAIL_REGEX = r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.(com|org|net|edu|gov|mil|info|io|co|biz|[a-zA-Z]{2})$'
+
 @app.post("/register")
 def register_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
+
+    if not re.match(EMAIL_REGEX, user.email):
+        raise HTTPException(status_code=400, detail="Invalid email")
+    
     db_user = db.query(models.User).filter(models.User.username == user.username).first()
     if db_user:
         return {"message": "Username already registered"}
