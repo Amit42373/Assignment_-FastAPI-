@@ -7,8 +7,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-SECRET_KEY = os.getenv("SECRET_KEY")
-ALGORITHM = os.getenv("ALGORITHM")
+SECRET_KEY = os.getenv("SECRET_KEY", "x7dE9nBq4kJ3mA2zR1L8vX9sW5tFqY0zP6dG")
+ALGORITHM = os.getenv("ALGORITHM", "HS256")
 ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", 30))
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
