@@ -3,8 +3,8 @@ import requests
 import re
 
 
-BASE_URL = "http://127.0.0.1:8000"
-# BASE_URL = "https://assignment-fastapi.onrender.com/"
+# BASE_URL = "http://127.0.0.1:8000"
+BASE_URL = "https://assignment-fastapi.onrender.com/"
 
 EMAIL_REGEX = r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.(com|org|net|edu|gov|mil|info|io|co|biz|[a-zA-Z]{2})$'
 
