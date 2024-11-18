@@ -2,10 +2,10 @@ from passlib.context import CryptContext
 from jose import JWTError, jwt
 from datetime import datetime, timedelta
 import secrets
-import os
-from dotenv import load_dotenv
+# import os
+# from dotenv import load_dotenv
 
-load_dotenv()
+# load_dotenv()
 
 SECRET_KEY = "x7dE9nBq4kJ3mA2zR1L8vX9sW5tFqY0zP6dG"
 ALGORITHM = "HS256"
